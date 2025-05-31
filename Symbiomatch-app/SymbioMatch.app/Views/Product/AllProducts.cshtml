@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SymbioMatch.app.Models.ProductViewModel>
+
+@{
+    ViewData["Title"] = "Product List";
+}
+
+<h1>Product List</h1>
+
+@if (!Model.Any())
+{
+    <p>No products available.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Created On</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.CreatedOn.ToString("yyyy-MM-dd")</td>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-primary">View Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

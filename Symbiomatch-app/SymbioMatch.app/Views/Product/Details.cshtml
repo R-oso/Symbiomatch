@@ -1,0 +1,48 @@
+﻿@model SymbioMatch.app.Models.ProductViewModel
+
+@{
+    ViewData["Title"] = "Product Details";
+}
+
+<h1>@Model.Name</h1>
+<p><strong>Created On:</strong> @Model.CreatedOn.ToString("MMMM dd, yyyy")</p>
+
+<h2>Company Information</h2>
+<div>
+    <p><strong>Name:</strong> @Model.Company.Name</p>
+    
+</div>
+
+<h2>Materials</h2>
+@if (Model.Materials.Any())
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Quantity</th>
+                <th>Unit</th>
+                <th>Expires At</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var material in Model.Materials)
+            {
+                <tr>
+                    <td>@material.Name</td>
+                    <td>@material.Description</td>
+                    <td>@material.Category</td>
+                    <td>@material.Quantity</td>
+                    <td>@material.Unit</td>
+                    <td>@material.ExpiresAt.ToString("MMMM dd, yyyy")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No materials available for this product.</p>
+}

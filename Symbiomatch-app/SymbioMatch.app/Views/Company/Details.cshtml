@@ -1,0 +1,28 @@
+﻿@model SymbioMatch.app.Models.CompanyViewModel
+
+@{
+    ViewData["Title"] = "Company Details";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+    <div class="form-group row">
+        <label for="Name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Name" value="@Model.Name" readonly />
+        </div>
+    </div>
+
+@*      <div class="form-group row">
+         <label for="Contact" class="col-sm-2 col-form-label">Contact</label>
+         <div class="col-sm-10">
+             <input type="text" class="form-control" id="Contact" value="@Model.Contact" readonly />
+         </div>
+     </div> *@
+
+@*     <div class="form-group row">
+        <label for="Location" class="col-sm-2 col-form-label">Location</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="Location" value="@Model.Location" readonly />
+        </div>
+    </div> *@

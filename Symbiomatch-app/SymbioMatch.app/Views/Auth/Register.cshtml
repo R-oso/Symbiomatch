@@ -1,0 +1,94 @@
+﻿@using SymbioMatch.app.Models.Auth
+@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<form id="register-form">
+    <div class="form-group">
+        <label asp-for="Firstname" class="form-label">Full Name:</label>
+        <input asp-for="Firstname" class="form-control" placeholder="Enter your first name" required />
+        <span asp-validation-for="Firstname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Lastname" class="form-label">Full Name:</label>
+        <input asp-for="Lastname" class="form-control" placeholder="Enter your last name" required />
+        <span asp-validation-for="Lastname" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Email" class="form-label">Email Address:</label>
+        <input asp-for="Email" class="form-control" placeholder="Enter your email" required />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Phonenumber" class="form-label">Phone Number:</label>
+        <input asp-for="Phonenumber" class="form-control" placeholder="Enter your phone number" required />
+        <span asp-validation-for="Phonenumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Password" class="form-label">Password:</label>
+        <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" required />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CompanyId" class="form-label">Company:</label>
+        <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-control" id="company-select">
+            <option value="">Select a company</option>
+        </select>
+        <span asp-validation-for="CompanyId" class="text-danger"></span>
+    </div>
+
+    <button type="button" id="newCompanyButton" class="btn btn-secondary" onclick="toggleNewCompanyFields()">Create New Company</button>
+
+    <div id="new-company-fields" style="display:none;">
+        <div class="form-group">
+            <label asp-for="NewCompany.Name" class="form-label">Company Name:</label>
+            <input asp-for="NewCompany.Name" class="form-control" placeholder="Enter the name of a new company" />
+            <span asp-validation-for="NewCompany.Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewCompany.Email" class="form-label">Company Email:</label>
+            <input asp-for="NewCompany.Email" class="form-control" placeholder="Enter Email" />
+            <span asp-validation-for="NewCompany.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewCompany.Phonenumber" class="form-label">Company Phone Number:</label>
+            <input asp-for="NewCompany.Phonenumber" class="form-control" placeholder="Enter Phone Number" />
+            <span asp-validation-for="NewCompany.Phonenumber" class="text-danger"></span>
+        </div>
+
+        <!-- Location fields -->
+        <div class="form-group">
+            <label asp-for="NewCompany.Location.Country" class="form-label">Country:</label>
+            <input asp-for="NewCompany.Location.Country" class="form-control" placeholder="Enter the country" />
+            <span asp-validation-for="NewCompany.Location.Country" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewCompany.Location.City" class="form-label">City:</label>
+            <input asp-for="NewCompany.Location.City" class="form-control" placeholder="Enter the city" />
+            <span asp-validation-for="NewCompany.Location.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewCompany.Location.Address" class="form-label">Address:</label>
+            <input asp-for="NewCompany.Location.Address" class="form-control" placeholder="Enter company address" />
+            <span asp-validation-for="NewCompany.Location.Address" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="NewCompany.Location.PostalCode" class="form-label">Postal Code:</label>
+            <input asp-for="NewCompany.Location.PostalCode" class="form-control" placeholder="Enter postal code" />
+            <span asp-validation-for="NewCompany.Location.PostalCode" class="text-danger"></span>
+        </div>
+    </div>
+
+    <br />
+    <button type="submit" class="btn btn-primary" id="register-submit-btn">Register</button>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPU8-cae6VoGLHEGBsbf2kGdRZA9FR564&libraries=places"></script>
+<script src="~/js/register.js"></script>
+

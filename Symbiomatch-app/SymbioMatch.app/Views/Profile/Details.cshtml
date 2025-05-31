@@ -1,0 +1,69 @@
+﻿@model SymbioMatch.app.Models.ProfileViewModel
+
+@{
+    ViewData["Title"] = "User Profile";
+}
+
+<div class="profile-container">
+    <h1>@Model.Firstname @Model.Lastname's Profile</h1>
+
+    <!-- Profile Details Form (Editable) -->
+    <div id="profile-form">
+        <div class="form-group">
+            <label for="Firstname">First Name</label>
+            <input type="text" id="Firstname" class="form-control" value="@Model.Firstname" />
+        </div>
+
+        <div class="form-group">
+            <label for="Lastname">Last Name</label>
+            <input type="text" id="Lastname" class="form-control" value="@Model.Lastname" />
+        </div>
+
+        <div class="form-group">
+            <label for="Email">Email</label>
+            <input type="email" id="Email" class="form-control" value="@Model.Email" />
+        </div>
+
+        <div class="form-group">
+            <label for="PhoneNumber">Phone Number</label>
+            <input type="text" id="PhoneNumber" class="form-control" value="@Model.PhoneNumber" />
+        </div>
+
+        <div class="form-group">
+            <label for="CompanyName">Company</label>
+            <input type="text" id="CompanyName" class="form-control" value="@Model.CompanyName" disabled />
+        </div>
+
+        <button id="saveChangesBtn" class="btn btn-primary">Save Changes</button>
+    </div>
+
+    <!-- Match History -->
+    <div class="match-history mt-4">
+        <h2>Match History</h2>
+        @if (Model.MatchHistory != null && Model.MatchHistory.Any())
+
+        {
+            <ul id="matchHistoryList">
+                @foreach (var match in Model.MatchHistory)
+
+                {
+                    <li>
+                        <strong>Matched on:</strong> @match.MatchedOn.ToString("dd MMM yyyy")
+                        <br />
+                        <strong>State:</strong> @match.State
+                        <br />
+                        <strong>Company:</strong> @match.Company.Name
+                        <br />
+                        <strong>Product:</strong> @match.Product.Name
+                    </li>
+                }
+            </ul>
+        }
+
+        else
+
+        {
+            <p>No match history available.</p>
+        }
+    </div>
+</div>
